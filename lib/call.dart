@@ -31,14 +31,14 @@ class Call {
   }
 
   Call({
-    required this.uuid,
-    required this.address,
-    required this.outgoing,
-    required this.callState,
+    this.uuid,
+    this.address,
+    this.outgoing,
+    this.callState,
   });
 
   Call copyWith(
-      {String? uuid, String? address, bool? outgoing, CallState? callState}) {
+      {String uuid, String address, bool outgoing, CallState callState}) {
     return Call(
         uuid: uuid ?? this.uuid,
         address: address ?? this.address,

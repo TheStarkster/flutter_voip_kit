@@ -14,7 +14,7 @@ class CallManager {
       StreamController<List<Call>>.broadcast();
 
   ///retrievs a call by its UUID if it exists in the current calls
-  Call? getCallByUuid(String uuid) {
+  Call getCallByUuid(String uuid) {
     try {
       return _calls.firstWhere(
           (element) => element.uuid.toLowerCase() == uuid.toLowerCase());
@@ -33,7 +33,7 @@ class CallManager {
   void endAll() async {
     for (Call call in _calls) {
       await FlutterVoipKit
-          .callStateChangeHandler!(call..callState = CallState.ended);
+          .callStateChangeHandler(call..callState = CallState.ended);
     }
     _calls.clear();
     _notifyListeners();
